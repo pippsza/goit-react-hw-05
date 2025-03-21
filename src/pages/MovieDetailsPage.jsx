@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink, Outlet, useLocation, useParams } from "react-router";
+import { useParams } from "react-router";
 import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
 import { fetchMovieDetails } from "../components/http/http";
 import MovieDetails from "../components/MovieDetails/MovieDetails";
