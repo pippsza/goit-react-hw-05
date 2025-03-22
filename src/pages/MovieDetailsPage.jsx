@@ -5,7 +5,7 @@ import { fetchMovieDetails } from "../components/http/http";
 import MovieDetails from "../components/MovieDetails/MovieDetails";
 export default function MovieDetailPage() {
   const [movieDetail, setMovieDetail] = useState({});
-  const { userId } = useParams();
+  const { movieId } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   useEffect(() => {
@@ -13,7 +13,7 @@ export default function MovieDetailPage() {
       try {
         setIsLoading(true);
         setError(false);
-        const data = await fetchMovieDetails(userId);
+        const data = await fetchMovieDetails(movieId);
         setMovieDetail(data);
       } catch {
         setError(true);
@@ -23,14 +23,14 @@ export default function MovieDetailPage() {
     }
 
     getMovie();
-  }, [userId]);
+  }, [movieId]);
 
   return (
     <>
       {isLoading && <b>Loading...</b>}
       {error && <ErrorMessage></ErrorMessage>}
 
-      <MovieDetails></MovieDetails>
+      <MovieDetails details={movieDetail}></MovieDetails>
     </>
   );
 }

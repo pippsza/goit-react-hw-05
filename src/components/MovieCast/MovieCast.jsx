@@ -3,15 +3,15 @@ import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 export default function MovieCast() {
   const [casts, setCasts] = useState([]);
-  const { userId } = useParams();
+  const { movieId } = useParams();
   useEffect(() => {
     async function getPosts() {
-      const data = await fetchMovieCredits(userId);
+      const data = await fetchMovieCredits(movieId);
       setCasts(data);
     }
 
     getPosts();
-  }, [userId]);
+  }, [movieId]);
 
   return (
     <>

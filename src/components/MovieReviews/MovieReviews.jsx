@@ -4,15 +4,15 @@ import { useEffect, useState } from "react";
 
 export default function MovieReviews() {
   const [reviews, setReviews] = useState([]);
-  const { userId } = useParams();
+  const { movieId } = useParams();
   useEffect(() => {
     async function getPosts() {
-      const data = await fetchMovieReviews(userId);
+      const data = await fetchMovieReviews(movieId);
       setReviews(data);
     }
 
     getPosts();
-  }, [userId]);
+  }, [movieId]);
   return (
     <>
       <ul>

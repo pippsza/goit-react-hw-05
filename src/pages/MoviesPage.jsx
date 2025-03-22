@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
 import { fetchMovieByQuery } from "../components/http/http";
 import MovieItem from "../components/MovieItem/MovieItem";
+import MovieList from "../components/MovieList/MovieList";
 export default function MoviePage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -54,15 +55,7 @@ export default function MoviePage() {
       {isLoading && <b>Loading users...</b>}{" "}
       {error && <ErrorMessage></ErrorMessage>}
       {movies.results?.length > 0 && (
-        <ul>
-          {movies.results.map((oneMovie) => {
-            return (
-              <li key={oneMovie.id}>
-                <MovieItem movieInfo={oneMovie}></MovieItem>
-              </li>
-            );
-          })}
-        </ul>
+        <MovieList movies={movies.results}></MovieList>
       )}
     </>
   );
